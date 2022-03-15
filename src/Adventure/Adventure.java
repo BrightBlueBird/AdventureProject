@@ -33,7 +33,7 @@ public class Adventure {
         "A bird chirps vigorously somewhere above you.");
 
     Room3.setSouth(Room6);
-    Room3.setEast(Room2);
+    Room3.setWest(Room2);
     Room3.setDescription("The room is completely dark, however a putrid, almost sweet smell fills your nostrils.");
 
     Room4.setNorth(Room1);
