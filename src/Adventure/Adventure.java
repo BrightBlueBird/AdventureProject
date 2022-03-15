@@ -15,8 +15,8 @@ public class Adventure {
   Room Room7 = new Room("The room of judgement");
   Room Room8 = new Room("The room of choice");
   Room Room9 = new Room("The room of mirrors");
-  Room currentRoom;
-  boolean isPlaying = true;
+  private Room currentRoom;
+  private boolean isPlaying = true;
   void Rooms () {
     Room1.setEast(Room2);
     Room1.setSouth(Room4);
@@ -85,18 +85,19 @@ public class Adventure {
       switch (input) {
         case 'n':
           Rooms();
-          currentRoom = currentRoom.getNorth();
-          if(currentRoom != null) {
+          if(currentRoom.getNorth() != null) {
+            currentRoom = currentRoom.getNorth();
             System.out.println("Going north");
             System.out.println("You are standing in: " + currentRoom.getName());
           }else {
             System.out.println("You can't go that direction");
+
           }
           break;
         case 's':
           Rooms();
-          currentRoom = currentRoom.getSouth();
-          if(currentRoom != null) {
+          if(currentRoom.getSouth() != null) {
+            currentRoom = currentRoom.getSouth();
             System.out.println("Going south");
             System.out.println("You are standing in: " + currentRoom.getName());
           }else {
@@ -105,8 +106,8 @@ public class Adventure {
           break;
         case 'e':
           Rooms();
-          currentRoom = currentRoom.getEast();
-          if(currentRoom != null) {
+          if(currentRoom.getEast() != null) {
+            currentRoom = currentRoom.getEast();
             System.out.println("Going East");
             System.out.println("You are standing in: " + currentRoom.getName());
           }else {
@@ -115,8 +116,8 @@ public class Adventure {
           break;
         case 'w':
           Rooms();
-          currentRoom = currentRoom.getWest();
-          if(currentRoom != null) {
+          if(currentRoom.getWest() != null) {
+            currentRoom = currentRoom.getWest();
             System.out.println("Going west");
             System.out.println("You are standing in: " + currentRoom.getName());
           }else {
@@ -143,6 +144,7 @@ public class Adventure {
       }
     }
   }
+
   void go() {
     Welcome();
     playerChoice();

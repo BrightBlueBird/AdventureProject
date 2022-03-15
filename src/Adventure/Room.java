@@ -11,7 +11,6 @@ public class Room {
 
   Room(String name) {
     this.name = name;
-
   }
 
   public void setNorth(Room north) {
