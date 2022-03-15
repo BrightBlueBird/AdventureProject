@@ -74,7 +74,6 @@ public class Adventure {
     playerName.setNameOfPlayer(scan.nextLine());
     System.out.println("Hi " + playerName.getNameOfPlayer());
     System.out.println("Welcome to the adventure game!");
-    System.out.println("Please enter [n]orth, [s]outh, [e]ast, [w]est, [l]ook, [h]elp, or [E]xit to start your adventure!");
   }
   void playerChoice() {
     char input;
