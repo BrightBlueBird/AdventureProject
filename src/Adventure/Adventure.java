@@ -17,7 +17,8 @@ public class Adventure {
   Room Room9 = new Room("The room of mirrors");
   private Room currentRoom;
   private boolean isPlaying = true;
-  void Rooms () {
+
+  void Rooms() {
     Room1.setEast(Room2);
     Room1.setSouth(Room4);
     Room1.setDescription("This is the room where the adventure begins!\n\n" +
@@ -69,12 +70,14 @@ public class Adventure {
         "At least you look handsome. ;)");
 
   }
-  void Welcome () {
+
+  void Welcome() {
     System.out.println("Please enter your player name");
     playerName.setNameOfPlayer(scan.nextLine());
     System.out.println("Hi " + playerName.getNameOfPlayer());
     System.out.println("Welcome to the adventure game!");
   }
+
   void playerChoice() {
     char input;
     currentRoom = Room1;
@@ -84,42 +87,42 @@ public class Adventure {
       switch (input) {
         case 'n':
           Rooms();
-          if(currentRoom.getNorth() != null) {
+          if (currentRoom.getNorth() != null) {
             currentRoom = currentRoom.getNorth();
             System.out.println("Going north");
             System.out.println("You are standing in: " + currentRoom.getName());
-          }else {
+          } else {
             System.out.println("You can't go that direction");
 
           }
           break;
         case 's':
           Rooms();
-          if(currentRoom.getSouth() != null) {
+          if (currentRoom.getSouth() != null) {
             currentRoom = currentRoom.getSouth();
             System.out.println("Going south");
             System.out.println("You are standing in: " + currentRoom.getName());
-          }else {
+          } else {
             System.out.println("You can't go that direction");
           }
           break;
         case 'e':
           Rooms();
-          if(currentRoom.getEast() != null) {
+          if (currentRoom.getEast() != null) {
             currentRoom = currentRoom.getEast();
             System.out.println("Going East");
             System.out.println("You are standing in: " + currentRoom.getName());
-          }else {
+          } else {
             System.out.println("You can't go that direction");
           }
           break;
         case 'w':
           Rooms();
-          if(currentRoom.getWest() != null) {
+          if (currentRoom.getWest() != null) {
             currentRoom = currentRoom.getWest();
             System.out.println("Going west");
             System.out.println("You are standing in: " + currentRoom.getName());
-          }else {
+          } else {
             System.out.println("You can't go that direction");
           }
           break;
