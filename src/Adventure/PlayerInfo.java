@@ -1,6 +1,6 @@
 package Adventure;
 
-public class playerInfo {
+public class PlayerInfo {
   private String nameOfPlayer;
 
   public void setNameOfPlayer (String nameOfPLayer){
