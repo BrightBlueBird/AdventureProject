@@ -5,7 +5,7 @@ public class Room {
   private Room south;
   private Room east;
   private Room west;
-  private String name;
+  final private String name;
   private String description;
 
 

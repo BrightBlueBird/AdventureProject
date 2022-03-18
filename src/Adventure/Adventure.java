@@ -4,7 +4,7 @@ public class Adventure {
   PlayerInfo playerName = new PlayerInfo();
   private Room currentRoom;
   UserInterface ui = new UserInterface();
-  CreateMap map = new CreateMap();
+  Map map = new Map();
   private boolean isPlaying = true;
 
   void playerChoice() {

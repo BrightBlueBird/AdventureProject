@@ -1,6 +1,6 @@
 package Adventure;
 
-public class CreateMap {
+public class Map {
  private Room startRoom;
   Room rooms() {
     Room room1 = new Room("The first room");
@@ -53,16 +53,18 @@ public class CreateMap {
 
     room7.setEast(room8);
     room7.setNorth(room4);
-    room7.setDescription("There is a wyvern sleeping in the room with an iron collar around it's neck. " +
-        "The iron collar is chained to the wall.\n" +
-        "There are burn marks on the stone walls.\n" +
-        "One of the burn marks outlines something that might have been human at some point...");
+    room7.setDescription("""
+        There is a wyvern sleeping in the room with an iron collar around it's neck.
+        The iron collar is chained to the wall.
+        There are burn marks on the stone walls.
+        One of the burn marks outlines something that might have been human at some point...""");
 
     room8.setNorth(room5);
     room8.setWest(room7);
     room8.setEast(room9);
-    room8.setDescription("There are three huge doors in total in this room.\n" +
-        "One door is cast in gold, one in silver and one in bronze.");
+    room8.setDescription("""
+        There are three huge doors in total in this room.
+        One door is cast in gold, one in silver and one in bronze.""");
 
     room9.setNorth(room6);
     room9.setWest(room8);
@@ -72,6 +74,4 @@ public class CreateMap {
    return startRoom = room1;
 
   }
-
-
 }
