@@ -1,5 +1,8 @@
 package Adventure;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room {
   private Room north;
   private Room south;
@@ -7,6 +10,7 @@ public class Room {
   private Room west;
   final private String name;
   private String description;
+  private ArrayList<Item> items = new ArrayList<>();
 
 
   Room(String name) {
@@ -29,7 +33,7 @@ public class Room {
     this.west = west;
   }
 
-  public void setDescription (String description) {
+  public void setDescription(String description) {
     this.description = description;
   }
 
@@ -52,6 +56,7 @@ public class Room {
   public String getDescription() {
     return description;
   }
+
   public String getName() {
     return name;
   }

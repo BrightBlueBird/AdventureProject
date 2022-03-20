@@ -13,6 +13,16 @@ public class Map {
     Room room8 = new Room("The room of choice");
     Room room9 = new Room("The room of mirrors");
 
+    Item Light = new Item(ConsoleColers.RED + "Light", ConsoleColers.PURPLE + "This spell is nice" + ConsoleColers.RESET);
+    Item Shovel = new Item(ConsoleColers.RED + "Shovel", ConsoleColers.PURPLE + "This tool helps for digging" + ConsoleColers.RESET);
+    Item Treasure = new Item(ConsoleColers.RED + "Treasure", ConsoleColers.PURPLE + "Oh mama! JACKPOT" + ConsoleColers.RESET);
+    Item Spell = new Item(ConsoleColers.RED + "Spell", ConsoleColers.PURPLE + "This spell is amazing for killing things" + ConsoleColers.RESET);
+    Item Beef = new Item(ConsoleColers.RED + "Beef", ConsoleColers.PURPLE + "Hungry? Lets eat some beef" + ConsoleColers.RESET);
+    Item Pepsi = new Item(ConsoleColers.RED + "Pepsi", ConsoleColers.PURPLE + "Quench the thirst" + ConsoleColers.RESET);
+    Item Keys = new Item(ConsoleColers.RED + "Keys", ConsoleColers.PURPLE + "Unlocks a specific door" + ConsoleColers.RESET);
+    Item Doors = new Item(ConsoleColers.RED + "Doors", ConsoleColers.PURPLE + "Many doors, oh no!" + ConsoleColers.RESET);
+    Item Hammer = new Item(ConsoleColers.RED + "Hammer", ConsoleColers.PURPLE + "Used as a weapon" + ConsoleColers.RESET);
+
     room1.setEast(room2);
     room1.setSouth(room4);
     room1.setDescription("""
@@ -20,6 +30,9 @@ public class Map {
         There are a couple of cobwebs in the corners of the room
         A chandelier cast a dim light on the cold stone walls
         To your east and west you see a wooden door.""");
+
+    room1.addItem(Light);
+    room1.addItem(Shovel);
 
     room2.setEast(room3);
     room2.setWest(room1);
@@ -71,7 +84,8 @@ public class Map {
     room9.setDescription("You see mirrors all around the room which makes it difficult to orient yourself.\n" +
         "At least you look handsome. ;)");
 
-   return startRoom = room1;
+    startRoom = room1;
+   return startRoom;
 
   }
 }
