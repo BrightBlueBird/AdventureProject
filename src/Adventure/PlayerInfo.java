@@ -58,9 +58,7 @@ public class PlayerInfo {
       ui.getWrongDirection();
     }
   }
-public Room getCurrentRoom() {
-  return currentRoom;
-}
+
   public void description() {
     System.out.println(currentRoom.getDescription());
   }

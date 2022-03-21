@@ -5,7 +5,6 @@ import java.util.List;
 
 
 public class Inventory {
-
   //ALOHOMORA UNLOCK DOORS
   //LOMOS = LIGHT
   //ACCIO BRINGS OBJECT CLOSER
@@ -39,5 +38,6 @@ public class Inventory {
       System.out.println("I need to use this spell " + userSpells.get(2));
 
  */
+
     }
 

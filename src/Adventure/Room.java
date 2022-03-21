@@ -37,6 +37,18 @@ public class Room {
     this.description = description;
   }
 
+  public ArrayList<Item> getItems(){
+    return items;
+  }
+
+  public ArrayList<Item>  dropItems(){
+    return items;
+  }
+
+  public void addItem(Item item){
+    items.add(item);
+  }
+
   public Room getNorth() {
     return north;
   }
