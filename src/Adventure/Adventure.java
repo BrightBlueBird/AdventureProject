@@ -1,17 +1,15 @@
 package Adventure;
 public class Adventure {
 
-
-  PlayerInfo playerMoving = new PlayerInfo();
-
   private UserInterface ui = new UserInterface();
   Map map = new Map();
   private boolean isPlaying = true;
-  private Room currentRoom;
+
 
 
   void playerChoice() {
-    playerMoving.setCurrentRoom(map.rooms());
+    Room startRoom  = map.getStartRoom();
+    PlayerInfo playerMoving = new PlayerInfo(startRoom);
     while (isPlaying) {
       ui.getCommandMessage();
       ui.setInput();
@@ -33,11 +31,8 @@ public class Adventure {
         playerMoving.description(); //TODO flyt description fra player klassen til UserInterface klassen.
           break;
         case 't':
-          System.out.println("You picked up " + currentRoom.getItems().indexOf("Doors"));
           break;
-
         case 'd':
-          System.out.println("You dropped " + currentRoom.dropItems().indexOf("Light"));
           break;
 
           /*

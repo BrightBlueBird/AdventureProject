@@ -1,10 +1,13 @@
 package Adventure;
 
+import java.util.ArrayList;
+
 public class PlayerInfo {
   private Room currentRoom;
+  private ArrayList<Item> inventory = new ArrayList<>();
 
-  public void setCurrentRoom(Room currentRoom) {
-    this.currentRoom = currentRoom;
+  public PlayerInfo(Room startRoom) {
+    this.currentRoom = startRoom;
   }
 
   public void north() {
@@ -60,6 +63,9 @@ public class PlayerInfo {
   }
 
   public void description() {
-    System.out.println(currentRoom.getDescription());
+    System.out.println(currentRoom.getRoomDescription());
+  }
+  public Item take() {
+    return null;
   }
 }

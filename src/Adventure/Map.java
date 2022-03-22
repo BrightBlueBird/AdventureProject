@@ -1,9 +1,12 @@
 package Adventure;
 
+import java.util.ArrayList;
+
 public class Map {
  private Room startRoom;
-  private Inventory items;
-  Room rooms() {
+
+  private ArrayList<Item> items = new ArrayList<>();
+  Map() {
     Room room1 = new Room("The first room");
     Room room2 = new Room("The green room");
     Room room3 = new Room("The dark room");
@@ -27,19 +30,17 @@ public class Map {
 
     room1.setEast(room2);
     room1.setSouth(room4);
-    room1.setDescription("""
+    room1.setRoomDescription("""
         This is the room where the adventure begins!
         There are a couple of cobwebs in the corners of the room
         A chandelier cast a dim light on the cold stone walls
         To your east and west you see a wooden door.""");
-
-    room1.addItem(Light);
+    room1.addItem(new Item(ConsoleColers.RED + "Garden Shears", ConsoleColers.PURPLE + "Used for cutting" + ConsoleColers.RESET));
     room1.addItem(Shovel);
-
 
     room2.setEast(room3);
     room2.setWest(room1);
-    room2.setDescription("""
+    room2.setRoomDescription("""
         You are standing in a massive greenhouse.
         You feel a sense of awe and wonder as you inspect all the exotic plants around you.
         A bird chirps vigorously somewhere above you.""");
@@ -47,26 +48,26 @@ public class Map {
 
     room3.setSouth(room6);
     room3.setWest(room2);
-    room3.setDescription("""
+    room3.setRoomDescription("""
         The room is completely dark, however a putrid, almost sweet smell fills your nostrils.""");
     room3.addItem(Light);
 
     room4.setNorth(room1);
     room4.setSouth(room7);
-    room4.setDescription("""
+    room4.setRoomDescription("""
         The room is filled with sand. Sand is also trickling down from the ceiling.
         You can see different kinds of furniture barely sticking up from the sand.""");
     room4.addItem(Shovel);
 
     room5.setSouth(room8);
-    room5.setDescription("""
+    room5.setRoomDescription("""
         You are in the treasure chamber or something!
         I think this is where you win the game later on.""");
     room5.addItem(Treasure);
 
     room6.setNorth(room3);
     room6.setSouth(room9);
-    room6.setDescription("""
+    room6.setRoomDescription("""
         You stand in something that looks like a medieval laboratory.
         Viles filled with liquids in all the colors of the rainbow decorate shelf's on the wall.
         A vile with a clear blue substance on a table in the corner of the room catches your attention.""");
@@ -74,7 +75,7 @@ public class Map {
 
     room7.setEast(room8);
     room7.setNorth(room4);
-    room7.setDescription("""
+    room7.setRoomDescription("""
         There is a wyvern sleeping in the room with an iron collar around it's neck.
         The iron collar is chained to the wall.
         There are burn marks on the stone walls.
@@ -85,7 +86,7 @@ public class Map {
     room8.setNorth(room5);
     room8.setWest(room7);
     room8.setEast(room9);
-    room8.setDescription("""
+    room8.setRoomDescription("""
         There are three huge doors in total in this room.
         One door is cast in gold, one in silver and one in bronze.""");
 
@@ -94,12 +95,14 @@ public class Map {
 
     room9.setNorth(room6);
     room9.setWest(room8);
-    room9.setDescription("You see mirrors all around the room which makes it difficult to orient yourself.\n" +
+    room9.setRoomDescription("You see mirrors all around the room which makes it difficult to orient yourself.\n" +
         "At least you look handsome. ;)");
     room9.addItem(Hammer);
 
-    startRoom = room1;
-   return startRoom;
+    this.startRoom = room1;
+  }
 
+  public Room getStartRoom() {
+    return startRoom;
   }
 }

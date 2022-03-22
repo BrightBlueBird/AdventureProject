@@ -1,20 +1,20 @@
 package Adventure;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Room {
   private Room north;
   private Room south;
   private Room east;
   private Room west;
-  final private String name;
-  private String description;
-  private ArrayList<Item> items = new ArrayList<>();
+  private String name;
+  private String roomDescription;
+  private ArrayList<Item> items;
 
 
   Room(String name) {
     this.name = name;
+    items = new ArrayList<>();
   }
 
   public void setNorth(Room north) {
@@ -33,16 +33,8 @@ public class Room {
     this.west = west;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public ArrayList<Item> getItems(){
-    return items;
-  }
-
-  public ArrayList<Item>  dropItems(){
-    return items;
+  public void setRoomDescription(String description) {
+    this.roomDescription = description;
   }
 
   public void addItem(Item item){
@@ -65,11 +57,13 @@ public class Room {
     return west;
   }
 
-  public String getDescription() {
-    return description;
+  public String getRoomDescription() {
+    return roomDescription;
   }
 
   public String getName() {
     return name;
   }
+
+
 }
