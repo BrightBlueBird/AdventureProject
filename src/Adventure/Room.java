@@ -58,12 +58,27 @@ public class Room {
     return roomDescription;
   }
 
+  public ArrayList<Item> getItems() {
+    return items; // Maybe String
+  }
+
   public String getName() {
     return name;
   }
 
   public void addItem(Item item){
     items.add(item);
+  }
+
+  public Item itemPlacedInRoom(String itemName) {
+    for (int i = 0; i < items.size(); i++) {
+      Item check = items.get(i);
+      if(check.getName().equals(itemName)) {
+        items.add(check);
+        return check;
+      }
+    }
+    return null;
   }
 
   public Item itemTakenFromRoom(String itemName) {

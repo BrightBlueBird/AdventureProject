@@ -65,13 +65,22 @@ public class PlayerInfo {
 
   public void description() {
     System.out.println(currentRoom.getRoomDescription());
+    System.out.println("You can see some items in the room: " + currentRoom.getItems());
   }
 
-  public Item take(String itemName) {
+  public Item takeFromRoom(String itemName) {
     Item takenRoomItem = currentRoom.itemTakenFromRoom(itemName);
     if (takenRoomItem != null) {
       inventory.add(takenRoomItem);
     }
     return takenRoomItem;
+  }
+
+  public Item putInRoom(String itemName) {
+    Item placedRoomItem = currentRoom.itemPlacedInRoom(itemName);
+    if (placedRoomItem != null) {
+      inventory.add(placedRoomItem);
+    }
+    return placedRoomItem;
   }
 }

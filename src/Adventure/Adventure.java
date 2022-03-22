@@ -1,4 +1,5 @@
 package Adventure;
+
 public class Adventure {
 
   private UserInterface ui = new UserInterface();
@@ -6,14 +7,13 @@ public class Adventure {
   private boolean isPlaying = true;
 
 
-
   void playerChoice() {
-    Room startRoom  = map.getStartRoom();
+    Room startRoom = map.getStartRoom();
     PlayerInfo playerMoving = new PlayerInfo(startRoom);
     while (isPlaying) {
       ui.getCommandMessage();
-      ui.setInput();
-      switch (ui.getInput()) {
+      ui.setMovementInput();
+      switch (ui.getMovementInput()) {
         case 'n':
           playerMoving.north();
           break;
@@ -28,31 +28,34 @@ public class Adventure {
           break;
         case 'l':
           ui.looksAround();
-        playerMoving.description(); //TODO flyt description fra player klassen til UserInterface klassen.
-          break;
-        case 't':
-          break;
-        case 'd':
-          break;
+          playerMoving.description(); //TODO flyt description fra player klassen til UserInterface klassen.
 
-          /*
-          String[] names = {"GardenShears", "Light", "Shovel"};
-          ArrayList<String> Item = new ArrayList<>(List.of(names));
-          System.out.println(Item);
-          Item.clear();
-          /* Item.add("Treasure");
-          Item.add("Spell");
-          Item.remove("Beef");
-          Item.add("Pepsi");
-          Item.add("Keys");
-          Item.add("Doors");
-          Item.add("Hammer");
-          List youThree = Item.subList(0,3);
-          Item.add(1,"Cho");
-          System.out.println(Item);
-          Item.set(1,"Ginny");
-          System.out.println(Item);
-   */
+          ui.chooseItem();
+          ui.setItemChoice();
+          if (ui.getItemChoice().equals("t")) {
+            ui.somethingWithItem();
+            ui.setItemInput();
+            Item itemInput = playerMoving.takeFromRoom(ui.getItemInput());
+            if (itemInput != null) {
+              System.out.println("You took " + itemInput);
+            } else {
+              System.out.println("There is no such item in this room!");
+            }
+          } else if (ui.getItemChoice().equals("d")) {
+            ui.somethingItem2();
+            ui.setItemInput();
+            Item itemInput = playerMoving.putInRoom(ui.getItemInput());
+            if (itemInput != null) {
+              System.out.println("You placed" + itemInput);
+            } else {
+              System.out.println("There is no such item in your inventory.");
+            }
+          } else if (!ui.getItemChoice().equals("n")) {
+            System.out.println("Invalid input");
+          } else {
+            System.out.println("You chose to do nothing with items.");
+          }
+
 
         case 'h':
           ui.getHelp();
