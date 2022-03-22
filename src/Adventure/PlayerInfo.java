@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 public class PlayerInfo {
   private Room currentRoom;
-  private ArrayList<Item> inventory = new ArrayList<>();
+  private ArrayList<Item> inventory;
 
   public PlayerInfo(Room startRoom) {
     this.currentRoom = startRoom;
+    inventory = new ArrayList<>();
   }
 
   public void north() {
-  UserInterface ui = new UserInterface();
+    UserInterface ui = new UserInterface();
 
     if (currentRoom.getNorth() != null) {
       currentRoom = currentRoom.getNorth();
@@ -55,7 +56,7 @@ public class PlayerInfo {
     if (currentRoom.getWest() != null) {
       currentRoom = currentRoom.getWest();
       ui.playerGoingWest();
-     // ui.roomName(); TODO Få den her metode til at virke
+      // ui.roomName(); TODO Få den her metode til at virke
       System.out.println(currentRoom.getName());
     } else {
       ui.getWrongDirection();
@@ -65,7 +66,12 @@ public class PlayerInfo {
   public void description() {
     System.out.println(currentRoom.getRoomDescription());
   }
-  public Item take() {
-    return null;
+
+  public Item take(String itemName) {
+    Item takenRoomItem = currentRoom.itemTakenFromRoom(itemName);
+    if (takenRoomItem != null) {
+      inventory.add(takenRoomItem);
+    }
+    return takenRoomItem;
   }
 }

@@ -37,9 +37,6 @@ public class Room {
     this.roomDescription = description;
   }
 
-  public void addItem(Item item){
-    items.add(item);
-  }
 
   public Room getNorth() {
     return north;
@@ -65,5 +62,18 @@ public class Room {
     return name;
   }
 
+  public void addItem(Item item){
+    items.add(item);
+  }
 
+  public Item itemTakenFromRoom(String itemName) {
+    for (int i = 0; i < items.size(); i++) {
+      Item check = items.get(i);
+      if(check.getName().equals(itemName)) {
+        items.remove(check);
+        return check;
+      }
+    }
+    return null;
+  }
 }

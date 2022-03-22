@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Map {
  private Room startRoom;
 
-  private ArrayList<Item> items = new ArrayList<>();
+
   Map() {
     Room room1 = new Room("The first room");
     Room room2 = new Room("The green room");
