@@ -37,6 +37,10 @@ public class UserInterface {
     System.out.println("The program is shutting down, Thanks for playing!");
   }
 
+  void fixScannerBug() {
+    scan.nextLine();
+  }
+
   void setMovementInput() {
     movementInput = scan.next().charAt(0);
   }
@@ -66,14 +70,24 @@ public class UserInterface {
   }
 
 
- /*public void roomName() {
-    PlayerInfo player = new PlayerInfo();
-    currentRoom = player.getCurrentRoom();
-    currentRoom.getName();
-  } TODO hvorfor virker det ikke? */
+  public void roomName(Room currentRoom) {
+    System.out.println(currentRoom.getName());
+  }
+
+  public void roomDescription(Room currentRoom) {
+    System.out.println(currentRoom.getRoomDescription());
+  }
+
+  public void roomItems(Room currentRoom) {
+    System.out.println(currentRoom.getItems());
+  }
 
   void looksAround() {
     System.out.println(playerName + " looks around the room.\n\n");
+  }
+
+  public void setItemChoice() {
+    itemChoice = scan.nextLine();
   }
 
   String getItemChoice() {
@@ -90,10 +104,6 @@ public class UserInterface {
 
   void somethingItem2() {
     System.out.println("Please write the item you would like to place in the room");
-  }
-
-  void setItemChoice() {
-    itemChoice = scan.nextLine();
   }
 
   public String getItemInput() {

@@ -10,27 +10,53 @@ public class Adventure {
   void playerChoice() {
     Room startRoom = map.getStartRoom();
     PlayerInfo playerMoving = new PlayerInfo(startRoom);
+    Boolean moved;
     while (isPlaying) {
       ui.getCommandMessage();
       ui.setMovementInput();
       switch (ui.getMovementInput()) {
         case 'n':
-          playerMoving.north();
+          moved = playerMoving.north();
+          if(moved) {
+            ui.playerGoingNorth();
+            ui.roomName(playerMoving.getCurrentRoom());
+          } else {
+            ui.getWrongDirection();
+          }
           break;
         case 's':
-          playerMoving.south();
+          moved = playerMoving.south();
+          if(moved) {
+            ui.playerGoingSouth();
+            ui.roomName(playerMoving.getCurrentRoom());
+          } else {
+            ui.getWrongDirection();
+          }
           break;
         case 'e':
-          playerMoving.east();
+          moved = playerMoving.east();
+          if(moved) {
+            ui.playerGoingEast();
+            ui.roomName(playerMoving.getCurrentRoom());
+          } else {
+            ui.getWrongDirection();
+          }
           break;
         case 'w':
-          playerMoving.west();
+          moved = playerMoving.west();
+          if(moved) {
+            ui.playerGoingWest();
+            ui.roomName(playerMoving.getCurrentRoom());
+          } else {
+            ui.getWrongDirection();
+          }
           break;
         case 'l':
           ui.looksAround();
-          playerMoving.description(); //TODO flyt description fra player klassen til UserInterface klassen.
-
+          ui.roomDescription(playerMoving.getCurrentRoom());
+          ui.roomItems(playerMoving.getCurrentRoom());
           ui.chooseItem();
+          ui.fixScannerBug();
           ui.setItemChoice();
           if (ui.getItemChoice().equals("t")) {
             ui.somethingWithItem();
@@ -50,13 +76,12 @@ public class Adventure {
             } else {
               System.out.println("There is no such item in your inventory.");
             }
-          } else if (!ui.getItemChoice().equals("n")) {
+               } else if (ui.getItemChoice().equals("n")) {
             System.out.println("Invalid input");
           } else {
             System.out.println("You chose to do nothing with items.");
           }
-
-
+          break;
         case 'h':
           ui.getHelp();
           break;
