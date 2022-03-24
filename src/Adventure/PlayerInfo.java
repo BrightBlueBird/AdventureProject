@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class PlayerInfo {
   private Room currentRoom;
-  private ArrayList<Item> inventory;
+  private ArrayList<String> inventory;
 
   public PlayerInfo(Room startRoom) {
     this.currentRoom = startRoom;
@@ -47,21 +47,16 @@ public class PlayerInfo {
     }
   }
 
-  public void description() {
-    System.out.println(currentRoom.getRoomDescription());
-    System.out.println("You can see some items in the room: " + currentRoom.getItems());
-  }
-
-  public Item takeFromRoom(String itemName) {
-    Item takenRoomItem = currentRoom.itemTakenFromRoom(itemName);
+  public String takeFromRoom(java.lang.String itemName) {
+    String takenRoomItem = currentRoom.itemTakenFromRoom(itemName);
     if (takenRoomItem != null) {
       inventory.add(takenRoomItem);
     }
     return takenRoomItem;
   }
 
-  public Item putInRoom(String itemName) {
-    Item placedRoomItem = currentRoom.itemPlacedInRoom(itemName);
+  public String putInRoom(java.lang.String itemName) {
+    String placedRoomItem = currentRoom.itemPlacedInRoom(itemName);
     if (placedRoomItem != null) {
       inventory.add(placedRoomItem);
     }

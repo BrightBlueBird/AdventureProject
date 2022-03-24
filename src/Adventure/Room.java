@@ -7,12 +7,12 @@ public class Room {
   private Room south;
   private Room east;
   private Room west;
-  private String name;
-  private String roomDescription;
-  private ArrayList<Item> items;
+  private java.lang.String name;
+  private java.lang.String roomDescription;
+  private ArrayList<String> items;
 
 
-  Room(String name) {
+  Room(java.lang.String name) {
     this.name = name;
     items = new ArrayList<>();
   }
@@ -33,7 +33,7 @@ public class Room {
     this.west = west;
   }
 
-  public void setRoomDescription(String description) {
+  public void setRoomDescription(java.lang.String description) {
     this.roomDescription = description;
   }
 
@@ -54,25 +54,25 @@ public class Room {
     return west;
   }
 
-  public String getRoomDescription() {
+  public java.lang.String getRoomDescription() {
     return roomDescription;
   }
 
-  public ArrayList<Item> getItems() {
+  public ArrayList<String> getItems() {
     return items; // Maybe String
   }
 
-  public String getName() {
+  public java.lang.String getName() {
     return name;
   }
 
-  public void addItem(Item item){
+  public void addItem(String item){
     items.add(item);
   }
 
-  public Item itemPlacedInRoom(String itemName) {
+  public String itemPlacedInRoom(java.lang.String itemName) {
     for (int i = 0; i < items.size(); i++) {
-      Item check = items.get(i);
+      String check = items.get(i);
       if(check.getName().equals(itemName)) {
         items.add(check);
         return check;
@@ -81,9 +81,9 @@ public class Room {
     return null;
   }
 
-  public Item itemTakenFromRoom(String itemName) {
+  public String itemTakenFromRoom(java.lang.String itemName) {
     for (int i = 0; i < items.size(); i++) {
-      Item check = items.get(i);
+      String check = items.get(i);
       if(check.getName().equals(itemName)) {
         items.remove(check);
         return check;

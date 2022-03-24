@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class UserInterface {
   Scanner scan = new Scanner(System.in);
   Room currentRoom;
-  private String playerName;
-  private String itemChoice;
+  private java.lang.String playerName;
+  private java.lang.String itemChoice;
   private char movementInput;
-  private String itemInput;
+  private java.lang.String itemInput;
 
   void welcome() {
     System.out.println("Please enter your player name");
@@ -90,7 +90,7 @@ public class UserInterface {
     itemChoice = scan.nextLine();
   }
 
-  String getItemChoice() {
+  java.lang.String getItemChoice() {
     return itemChoice;
   }
 
@@ -106,7 +106,7 @@ public class UserInterface {
     System.out.println("Please write the item you would like to place in the room");
   }
 
-  public String getItemInput() {
+  public java.lang.String getItemInput() {
     return itemInput;
   }
 

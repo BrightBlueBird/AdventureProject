@@ -61,7 +61,7 @@ public class Adventure {
           if (ui.getItemChoice().equals("t")) {
             ui.somethingWithItem();
             ui.setItemInput();
-            Item itemInput = playerMoving.takeFromRoom(ui.getItemInput());
+            String itemInput = playerMoving.takeFromRoom(ui.getItemInput());
             if (itemInput != null) {
               System.out.println("You took " + itemInput);
             } else {
@@ -70,7 +70,7 @@ public class Adventure {
           } else if (ui.getItemChoice().equals("d")) {
             ui.somethingItem2();
             ui.setItemInput();
-            Item itemInput = playerMoving.putInRoom(ui.getItemInput());
+            String itemInput = playerMoving.putInRoom(ui.getItemInput());
             if (itemInput != null) {
               System.out.println("You placed" + itemInput);
             } else {
