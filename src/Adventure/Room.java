@@ -84,8 +84,10 @@ public class Room {
   public Item itemTakenFromRoom(String itemName) {
     for (int i = 0; i < items.size(); i++) {
       Item check = items.get(i);
-      if(itemName.equals(check.getName())) {
-        items.remove(check);
+
+      if(itemName.equalsIgnoreCase(check.getName())) {
+        items.remove(i);
+
         return check;
       }
     }
