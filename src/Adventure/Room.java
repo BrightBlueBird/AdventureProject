@@ -70,6 +70,10 @@ public class Room {
     items.add(item);
   }
 
+  public void addFood(Food foods){
+    items.add(foods);
+  }
+
   public Item itemPlacedInRoom(String itemName) {
     for (int i = 0; i < items.size(); i++) {
       Item check = items.get(i);

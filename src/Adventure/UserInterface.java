@@ -9,6 +9,7 @@ public class UserInterface {
   private String itemChoice;
   private char movementInput;
   private String itemInput;
+  private String inventoryInput;
 
   void welcome() {
     System.out.println("Please enter your player name");
@@ -25,6 +26,7 @@ public class UserInterface {
         Press e and press enter to go to the room east of your current position.
         Press w and press enter to go to the room west of your current position.
         Press l and enter to get a description of the room your standing in.
+        Press i and enter to get a list of the items currently on your person.
         Press E and enter to terminate the program.
         You can always press h and enter again to get a list of commands. Hope you have fun! :)""");
   }
@@ -50,7 +52,7 @@ public class UserInterface {
   }
 
   void getCommandMessage() {
-    System.out.println("Please enter [n]orth, [s]outh, [e]ast, [w]est, [l]ook, [h]elp, or [E]xit ");
+    System.out.println("Please enter [n]orth, [s]outh, [e]ast, [w]est, [l]ook, [i]nventory, [h]elp, or [E]xit");
   }
 
   void playerGoingNorth() {
@@ -106,13 +108,31 @@ public class UserInterface {
     System.out.println("Please write the item you would like to place in the room");
   }
 
+  void displayInventory(PlayerInfo player) {
+    System.out.println(player.getInventory());
+  }
+
+  void inventoryAction() {
+    System.out.println("Would you like to [c]onsume or [a]ttack ?");
+  }
+
   public String getItemInput() {
     return itemInput;
+  }
+
+  public String getInventoryInput() {
+    return inventoryInput;
   }
 
   public void setItemInput() {
     itemInput = scan.nextLine();
   }
+
+  public void setInventoryInput() {
+    inventoryInput = scan.nextLine();
+  }
+
+
 }
 
 

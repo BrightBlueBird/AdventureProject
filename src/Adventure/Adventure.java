@@ -6,7 +6,6 @@ public class Adventure {
   Map map = new Map();
   private boolean isPlaying = true;
 
-
   void playerChoice() {
     Room startRoom = map.getStartRoom();
     PlayerInfo playerMoving = new PlayerInfo(startRoom);
@@ -51,6 +50,12 @@ public class Adventure {
             ui.getWrongDirection();
           }
         }
+        case 'i' -> {
+          ui.displayInventory(playerMoving);
+          ui.inventoryAction();
+          ui.setInventoryInput();
+
+        }
         case 'l' -> {
           ui.looksAround();
           ui.roomDescription(playerMoving.getCurrentRoom());
@@ -69,6 +74,7 @@ public class Adventure {
                 System.out.println("There is no such item in this room.");
               }
             }
+
             case "d" -> {
               ui.askWhatItemToPut();
               ui.setItemInput();
@@ -80,32 +86,8 @@ public class Adventure {
               }
             }
           }
-
-         /* if (ui.getItemChoice().equals("t")) {
-            ui.somethingWithItem();
-            ui.setItemInput();
-            Item itemInput = playerMoving.takeFromRoom(ui.getItemInput());
-            if (itemInput != null) {
-              System.out.println("You took " + itemInput);
-            } else {
-              System.out.println("There is no such item in this room!");
-            }
-          } else if (ui.getItemChoice().equals("d")) {
-            ui.somethingItem2();
-            ui.setItemInput();
-            Item itemInput = playerMoving.putInRoom(ui.getItemInput());
-            if (itemInput != null) {
-              System.out.println("You placed" + itemInput);
-            } else {
-              System.out.println("There is no such item in your inventory.");
-            }
-          } else if (ui.getItemChoice().equals("n")) {
-            System.out.println("Invalid input");
-          } else {
-            System.out.println("You chose to do nothing with items.");
-          } */
-
         }
+
         case 'h' -> ui.getHelp();
         case 'E' -> {
           ui.getExitMessage();

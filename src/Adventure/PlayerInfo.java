@@ -47,6 +47,10 @@ public class PlayerInfo {
     }
   }
 
+  public ArrayList<Item> getInventory() {
+    return inventory;
+  }
+
   public Item takeFromRoom(String itemName) {
     Item takenRoomItem = currentRoom.itemTakenFromRoom(itemName);
     if (takenRoomItem != null) {
