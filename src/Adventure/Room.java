@@ -7,8 +7,9 @@ public class Room {
   private Room south;
   private Room east;
   private Room west;
-  private String name;
+  final private String name;
   private String roomDescription;
+  private boolean isEdible;
   private ArrayList<Item> items;
 
 
@@ -62,6 +63,7 @@ public class Room {
     return items; // Maybe String
   }
 
+
   public String getName() {
     return name;
   }
@@ -88,10 +90,8 @@ public class Room {
   public Item itemTakenFromRoom(String itemName) {
     for (int i = 0; i < items.size(); i++) {
       Item check = items.get(i);
-
       if(itemName.equalsIgnoreCase(check.getName())) {
         items.remove(i);
-
         return check;
       }
     }

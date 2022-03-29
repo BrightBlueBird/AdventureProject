@@ -9,6 +9,7 @@ public class Adventure {
   void playerChoice() {
     Room startRoom = map.getStartRoom();
     PlayerInfo playerMoving = new PlayerInfo(startRoom);
+    playerMoving.setStartHealth(50);
     Boolean moved;
     while (isPlaying) {
       ui.getCommandMessage();
@@ -53,8 +54,20 @@ public class Adventure {
         case 'i' -> {
           ui.displayInventory(playerMoving);
           ui.inventoryAction();
+          ui.fixScannerBug();
           ui.setInventoryInput();
-
+          if (ui.getInventoryInput().equals("c")) {
+            ui.whichItemToConsume();
+            ui.setInventoryInput();
+            Item tmp;
+            tmp = playerMoving.doesItemExistInventory(ui.getInventoryInput());
+            if (!tmp.getIsEdible()) {
+              ui.itemIsNotEdible();
+            } else {
+              playerMoving.Eat(tmp);
+              ui.youAteFood(tmp.getName(), playerMoving.getCurrentHealth());
+            }
+          }
         }
         case 'l' -> {
           ui.looksAround();
@@ -69,17 +82,30 @@ public class Adventure {
               ui.setItemInput();
               Item itemInput = playerMoving.takeFromRoom(ui.getItemInput());
               if (itemInput != null) {
-                System.out.println("You picked up an item.");
+                if (itemInput.getIsEdible()) {
+                  ui.eatOrKeep();
+                  ui.setEatOrKeep();
+                  if (ui.getEatOrKeep().equals("c")) {
+                    playerMoving.Eat(itemInput);
+                    ui.youAteFood(itemInput.getName(), playerMoving.getCurrentHealth());
+                  }
+                  if(ui.getEatOrKeep().equals("k")){
+                    System.out.println("You picked up an item");
+                  }
+                }
+                if(!itemInput.getIsEdible()) {
+                System.out.println("You picked up an item");
+                }
               } else {
-                System.out.println("There is no such item in this room.");
-              }
+                  System.out.println("There is no such item in this room.");
+                }
             }
 
             case "d" -> {
               ui.askWhatItemToPut();
               ui.setItemInput();
               Item itemInput = playerMoving.putInRoom(ui.getItemInput());
-              if(itemInput != null) {
+              if (itemInput != null) {
                 System.out.println("You placed an item.");
               } else {
                 System.out.println("There is no such item in this room.");
@@ -87,8 +113,8 @@ public class Adventure {
             }
           }
         }
-
-        case 'h' -> ui.getHelp();
+        case 'h' -> ui.displayHealth(playerMoving.getCurrentHealth());
+        case 'H' -> ui.getHelp();
         case 'E' -> {
           ui.getExitMessage();
           isPlaying = false;

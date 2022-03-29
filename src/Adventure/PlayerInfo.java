@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class PlayerInfo {
   private Room currentRoom;
   private ArrayList<Item> inventory;
+  private int currentHealth;
 
   public PlayerInfo(Room startRoom) {
     this.currentRoom = startRoom;
@@ -68,5 +69,24 @@ public class PlayerInfo {
   }
   public Room getCurrentRoom() {
     return currentRoom;
+  }
+  public void setStartHealth(int currentHealth) {
+    this.currentHealth = currentHealth;
+  }
+  public int getCurrentHealth() {
+    return currentHealth;
+  }
+  public void Eat(Item food) {
+    currentHealth = currentHealth + food.getHealth();
+    inventory.remove(food);
+  }
+  public Item doesItemExistInventory(String foodName) {
+    for (int i = 0; i < inventory.size(); i++) {
+      Item check = inventory.get(i);
+      if(foodName.equalsIgnoreCase(inventory.get(i).getName())) {
+        return check;
+      }
+    }
+    return null;
   }
 }
