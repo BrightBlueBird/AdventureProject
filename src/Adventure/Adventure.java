@@ -8,8 +8,7 @@ public class Adventure {
 
   void playerChoice() {
     Room startRoom = map.getStartRoom();
-    PlayerInfo playerMoving = new PlayerInfo(startRoom);
-    playerMoving.setStartHealth(50);
+    PlayerInfo playerMoving = new PlayerInfo(startRoom, 50);
     Boolean moved;
     while (isPlaying) {
       ui.getCommandMessage();
@@ -61,11 +60,15 @@ public class Adventure {
             ui.setInventoryInput();
             Item tmp;
             tmp = playerMoving.doesItemExistInventory(ui.getInventoryInput());
-            if (!tmp.getIsEdible()) {
-              ui.itemIsNotEdible();
+            if (tmp == null) {
+              System.out.println("You do not have this item in your inventory");
             } else {
-              playerMoving.Eat(tmp);
-              ui.youAteFood(tmp.getName(), playerMoving.getCurrentHealth());
+              if (!tmp.getIsEdible()) {
+                ui.itemIsNotEdible();
+              } else {
+                playerMoving.Eat(tmp);
+                ui.youAteFood(tmp.getName(), playerMoving.getCurrentHealth());
+              }
             }
           }
         }
@@ -89,16 +92,16 @@ public class Adventure {
                     playerMoving.Eat(itemInput);
                     ui.youAteFood(itemInput.getName(), playerMoving.getCurrentHealth());
                   }
-                  if(ui.getEatOrKeep().equals("k")){
+                  if (ui.getEatOrKeep().equals("k")) {
                     System.out.println("You picked up an item");
                   }
                 }
-                if(!itemInput.getIsEdible()) {
-                System.out.println("You picked up an item");
+                if (!(itemInput instanceof Food)) {
+                  System.out.println("You picked up an item");
                 }
               } else {
-                  System.out.println("There is no such item in this room.");
-                }
+                System.out.println("There is no such item in this room.");
+              }
             }
 
             case "d" -> {

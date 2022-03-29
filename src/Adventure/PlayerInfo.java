@@ -7,8 +7,9 @@ public class PlayerInfo {
   private ArrayList<Item> inventory;
   private int currentHealth;
 
-  public PlayerInfo(Room startRoom) {
+  public PlayerInfo(Room startRoom, int currentHealth) {
     this.currentRoom = startRoom;
+    this.currentHealth = currentHealth;
     inventory = new ArrayList<>();
   }
 
@@ -70,9 +71,10 @@ public class PlayerInfo {
   public Room getCurrentRoom() {
     return currentRoom;
   }
-  public void setStartHealth(int currentHealth) {
+ /* public void setStartHealth(int currentHealth) {
     this.currentHealth = currentHealth;
   }
+  Måske skal vi lave StartHealth som en konstruktor i stedet for? */
   public int getCurrentHealth() {
     return currentHealth;
   }

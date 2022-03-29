@@ -169,7 +169,7 @@ public class UserInterface {
       System.out.println("Health: " + currentHealth + " - I would probably hold back!");
     }
     if (currentHealth < 60) {
-      System.out.println("Health:" + currentHealth + " - DONT FIGHT!");
+      System.out.println("Health: " + currentHealth + " - DONT FIGHT!");
     }
   }
 

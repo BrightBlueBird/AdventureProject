@@ -23,6 +23,7 @@ public class Map {
         A chandelier cast a dim light on the cold stone walls
         To your east and west you see a wooden door.""");
     room1.addItem(new Item("Shovel","This tool helps for digging", false));
+    room1.addItem(new RangedWeapon("Gun", "Shoots fast and hits hard", false, false));
 
     room2.setEast(room3);
     room2.setWest(room1);
