@@ -71,6 +71,24 @@ public class Adventure {
               }
             }
           }
+          if(ui.getInventoryInput().equals("e")) {
+            ui.whichWeaponToEquip();
+            ui.setEquippedWeapon();
+            Item tmp;
+            tmp = playerMoving.doesItemExistInventory(ui.getInventoryInput());
+            if(tmp == null) {
+              System.out.println("You do not have this item in your inventory");
+            } else {
+              if(tmp instanceof Weapon) {
+                playerMoving.removeEquipped();
+                ((Weapon) tmp).setIsEquipped(true);
+                playerMoving.equip(tmp);
+                System.out.println("You equipped: " + tmp);
+              } else {
+                System.out.println("You can't equip this it is not a weapon.");
+              }
+            }
+          }
         }
         case 'l' -> {
           ui.looksAround();
@@ -117,6 +135,13 @@ public class Adventure {
           }
         }
         case 'h' -> ui.displayHealth(playerMoving.getCurrentHealth());
+        case 'x' -> { Item itemInput = playerMoving.equipmentStatus();
+          if(itemInput != null) {
+            System.out.println("You have " + itemInput + "Equipped.");
+          } else {
+            System.out.println("You have no item equipped.");
+          }
+        }
         case 'H' -> ui.getHelp();
         case 'E' -> {
           ui.getExitMessage();

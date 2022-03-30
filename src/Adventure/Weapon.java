@@ -8,12 +8,19 @@ public class Weapon extends Item {
     this.isEquipped = isEquipped;
   }
 
-  public boolean canUse() {
-    //Always returns true tror jeg.
-    return true;
-
+ public String canUse() {
+    return null;
   }
+
   public int getAmmo() {
     return ammo;
+  }
+
+  public void setIsEquipped(boolean isEquipped) {
+    this.isEquipped = isEquipped;
+  }
+
+  public boolean getIsEquipped() {
+    return isEquipped;
   }
 }

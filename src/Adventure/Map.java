@@ -23,7 +23,7 @@ public class Map {
         A chandelier cast a dim light on the cold stone walls
         To your east and west you see a wooden door.""");
     room1.addItem(new Item("Shovel","This tool helps for digging", false));
-    room1.addItem(new RangedWeapon("Gun", "Shoots fast and hits hard", false, false));
+    room1.addItem(new RangedWeapon("Gun", "Shoots fast and hits hard", false, false, 25));
 
     room2.setEast(room3);
     room2.setWest(room1);
@@ -40,6 +40,7 @@ public class Map {
     room3.setRoomDescription("""
         The room is completely dark, however a putrid, almost sweet smell fills your nostrils.""");
     room3.addItem(new Item("Light","This spell is nice", false));
+    room3.addItem(new MeleeWeapon("Knife", "Sharp to the touch", false, false));
 
     room4.setNorth(room1);
     room4.setSouth(room7);

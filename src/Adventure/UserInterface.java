@@ -51,7 +51,7 @@ public class UserInterface {
   }
 
   void getCommandMessage() {
-    System.out.println("Please enter [n]orth, [s]outh, [e]ast, [w]est, [l]ook, [i]nventory, [h]ealth, [H]elp or [E]xit");
+    System.out.println("Please enter [n]orth, [s]outh, [e]ast, [w]est, [l]ook, [i]nventory, [h]ealth, [x]equipped, [H]elp or [E]xit");
   }
 
   void playerGoingNorth() {
@@ -112,7 +112,7 @@ public class UserInterface {
   }
 
   void inventoryAction() {
-    System.out.println("Would you like to [c]onsume or [a]ttack ?");
+    System.out.println("Would you like to [c]onsume, [e]quip a weapon or [a]ttack ?");
   }
 
   void whichItemToConsume() {
@@ -153,6 +153,14 @@ public class UserInterface {
 
   public String getEatOrKeep() {
     return itemInput;
+  }
+
+  public void whichWeaponToEquip() {
+    System.out.println("Please write the weapon you would like to equip");
+  }
+
+  public void setEquippedWeapon() {
+    itemInput = scan.nextLine();
   }
 
   public void displayHealth(int currentHealth) {
